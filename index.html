@@ -47,19 +47,19 @@
   .hidden { display: none; }
   hr { margin: 30px 0; border: none; border-top: 1px solid #ddd; }
 
-  /* Floating hearts */
+  /* Floating hearts magic */
   .heart {
     position: fixed;
     bottom: -50px;
-    font-size: 14px;
     color: red;
-    animation: floatUp 5s linear infinite;
     pointer-events: none;
+    animation-name: floatUp;
+    animation-timing-function: linear;
   }
   @keyframes floatUp {
-    0% { transform: translateY(0) scale(1); opacity:1; }
-    50% { transform: translateY(-200px) scale(1.2); opacity:0.8; }
-    100% { transform: translateY(-500px) scale(1); opacity:0; }
+    0% { transform: translateY(0) scale(1) rotate(0deg); opacity:1; }
+    50% { transform: translateY(-200px) scale(1.2) rotate(180deg); opacity:0.8; }
+    100% { transform: translateY(-500px) scale(0.8) rotate(360deg); opacity:0; }
   }
 </style>
 </head>
@@ -132,22 +132,33 @@
     <div id="holdMessage" class="message"></div>
   </div>
 
+  <!-- SEVENTH QUESTION -->
+  <div id="q7" class="hidden">
+    <hr />
+    <p>Can you come tomorrow at 2pm? My day would be so much better with you in it. 🥰</p>
+    <div class="buttons">
+      <button class="yes" id="comeYes">Yes</button>
+      <button class="no" id="comeNo">No</button>
+    </div>
+    <div id="comeMessage" class="message"></div>
+  </div>
+
 </div>
 
 <script>
-// Utility
+// Utility functions
 function show(qId){ document.getElementById(qId).classList.remove('hidden'); }
 function hide(qId){ document.getElementById(qId).classList.add('hidden'); }
 function setMsg(msgId, text){ document.getElementById(msgId).textContent = text; }
 
-// Flow logic
+// Attach each question in strict Yes/No flow
 function attachQuestion(yesId,noId,currentQ,nextQ,msgId){
   document.getElementById(yesId).onclick = ()=>{
-    hide(currentQ); // remove current question
-    show(nextQ);   // show next question
+    hide(currentQ);
+    show(nextQ);
   };
   document.getElementById(noId).onclick = ()=>{
-    setMsg(msgId,"You might press No… but please press Yes 🥺💖"); // stay on same question
+    setMsg(msgId,"You might press No… but please press Yes 🥺💖");
   };
 }
 
@@ -157,18 +168,21 @@ attachQuestion('gameYes','gameNo','q2','q3','gameMessage');
 attachQuestion('romanceYes','romanceNo','q3','q4','romanceMessage');
 attachQuestion('kissYes','kissNo','q4','q5','kissMessage');
 attachQuestion('hugYes','hugNo','q5','q6','hugMessage');
-attachQuestion('holdYes','holdNo','q6','q6','holdMessage'); // last question loops to itself if No
+attachQuestion('holdYes','holdNo','q6','q7','holdMessage');
+attachQuestion('comeYes','comeNo','q7','q7','comeMessage'); // last question loops if No
 
 // Floating hearts
 function createHeart(){
   const heart = document.createElement('div');
   heart.className = 'heart';
-  heart.style.left = Math.random()*100 + 'vw';
-  heart.style.fontSize = (Math.random()*12 + 10)+'px';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.fontSize = (Math.random() * 12 + 10) + 'px';
+  heart.style.opacity = Math.random() * 0.5 + 0.5;
+  heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+  heart.style.animationDelay = Math.random() * 2 + 's';
   heart.textContent = '❤️';
-  heart.style.animationDuration = (Math.random()*3+4)+'s';
   document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),5000);
+  setTimeout(() => heart.remove(), 7000);
 }
 setInterval(createHeart, 400);
 </script>
