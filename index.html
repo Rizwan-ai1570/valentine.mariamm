@@ -1,1 +1,184 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mariam Rizwan ❤️</title>
+<style>
+body {
+  margin:0; font-family: Arial,sans-serif; 
+  background: linear-gradient(to bottom,#f8e6eb,#fff); 
+  display:flex; justify-content:center; padding:40px 0; 
+  overflow-x:hidden; position:relative;
+}
+
+/* Container for questions */
+.container {
+  background:#e60073; /* Dark pink background */
+  border-radius:25px; 
+  box-shadow:0 15px 30px rgba(0,0,0,0.1); 
+  width:460px; 
+  padding:40px; 
+  text-align:center; 
+  z-index:1; 
+  position:relative;
+}
+
+/* Text styling */
+h1,h2,p,.message {
+  font-weight:bold; 
+  font-style:italic; 
+  color:white; /* white text on dark pink */
+}
+h1{font-size:32px;margin-bottom:0;} 
+h2{font-size:24px;}
+p{font-size:20px;margin-top:8px;margin-bottom:24px;}
+.message{margin-top:12px;min-height:24px;}
+
+.buttons{margin-bottom:15px;}
+button{
+  padding:10px 30px;border:none;border-radius:25px;font-size:16px;cursor:pointer;margin:8px;transition:background-color 0.3s;
+}
+.yes{background-color:#ff3366;color:white;}
+.yes:hover{background-color:#ff1a53;}
+.no{background-color:#ccc;}
+.no:hover{background-color:#bbb;}
+
+/* Gift buttons styling */
+#q8 button{
+  background-color:#8B0000; /* dark red */
+  color:white;
+  font-weight:bold;
+  font-style:italic;
+}
+#q8 button:hover{background-color:#a50000;}
+
+.hidden{display:none;}
+hr{margin:30px 0;border:none;border-top:1px solid #fff;}
+
+/* Floating hearts */
+.heart{position:fixed;bottom:-50px;color:red;pointer-events:none;animation-name:floatUp;animation-timing-function:linear;}
+@keyframes floatUp{0%{transform:translateY(0) scale(1) rotate(0deg);opacity:1;}50%{transform:translateY(-200px) scale(1.2) rotate(180deg);opacity:0.8;}100%{transform:translateY(-500px) scale(0.8) rotate(360deg);opacity:0;}}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Question 1 to 7 -->
+  <div id="q1"> <h1>Mariam Rizwan ❤️</h1><p>Ready for a sweet Valentine's challenge?</p>
+    <div class="buttons"><button class="yes" id="firstYes">Yes!</button><button class="no" id="firstNo">No</button></div>
+    <div id="firstMessage" class="message"></div>
+  </div>
+
+  <div id="q2" class="hidden"><hr /><p>Do you wanna play a game with me? 🎮</p>
+    <div class="buttons"><button class="yes" id="gameYes">Yes</button><button class="no" id="gameNo">No</button></div>
+    <div id="gameMessage" class="message"></div>
+  </div>
+
+  <div id="q3" class="hidden"><hr /><p>Do you want a romance tonight? ❤️</p>
+    <div class="buttons"><button class="yes" id="romanceYes">Yes</button><button class="no" id="romanceNo">No</button></div>
+    <div id="romanceMessage" class="message"></div>
+  </div>
+
+  <div id="q4" class="hidden"><hr /><p>Can I steal a sweet kiss from you? 😘💕</p>
+    <div class="buttons"><button class="yes" id="kissYes">Yes</button><button class="no" id="kissNo">No</button></div>
+    <div id="kissMessage" class="message"></div>
+  </div>
+
+  <div id="q5" class="hidden"><hr /><p>Would you like to give me a warm hug? 🤗❤️</p>
+    <div class="buttons"><button class="yes" id="hugYes">Yes</button><button class="no" id="hugNo">No</button></div>
+    <div id="hugMessage" class="message"></div>
+  </div>
+
+  <div id="q6" class="hidden"><hr /><p>Will you hold me close for a little while? 🥰</p>
+    <div class="buttons"><button class="yes" id="holdYes">Yes</button><button class="no" id="holdNo">No</button></div>
+    <div id="holdMessage" class="message"></div>
+  </div>
+
+  <div id="q7" class="hidden"><hr /><p>Can you come tomorrow at 2pm? My day would be so much better with you in it. 🥰</p>
+    <div class="buttons"><button class="yes" id="comeYes">Yes</button><button class="no" id="comeNo">No</button></div>
+    <div id="comeMessage" class="message"></div>
+  </div>
+
+  <!-- 8th Question with gifts -->
+  <div id="q8" class="hidden"><hr />
+    <p>You're coming tomorrow at 2am. Here are 3 gifts I'll give you tomorrow:</p>
+    <div class="buttons">
+      <button id="gift1">Gift 1</button>
+      <button id="gift2">Gift 2</button>
+      <button id="gift3">Gift 3</button>
+    </div>
+  </div>
+
+  <!-- Gift displays -->
+  <div id="giftDisplay" class="hidden"><hr />
+    <p id="giftText"></p>
+    <div class="buttons"><button id="backGift">Back</button></div>
+  </div>
+
+  <!-- Final Thank You Page -->
+  <div id="finalPage" class="hidden"><hr />
+    <h2>Thank you! ❤️</h2>
+    <p>I'll wait for you tomorrow at 2pm, Mariam 💖</p>
+  </div>
+
+</div>
+
+<script>
+// Utility
+function show(id){ document.getElementById(id).classList.remove('hidden'); }
+function hide(id){ document.getElementById(id).classList.add('hidden'); }
+function setMsg(id,text){ document.getElementById(id).textContent=text; }
+
+// Yes/No flow
+function attachQuestion(yesId,noId,currentQ,nextQ,msgId){
+  document.getElementById(yesId).onclick = ()=>{
+    hide(currentQ);
+    show(nextQ);
+  };
+  document.getElementById(noId).onclick = ()=>{
+    setMsg(msgId,"You might press No… but please press Yes 🥺💖");
+  };
+}
+
+// Attach first 7 questions
+attachQuestion('firstYes','firstNo','q1','q2','firstMessage');
+attachQuestion('gameYes','gameNo','q2','q3','gameMessage');
+attachQuestion('romanceYes','romanceNo','q3','q4','romanceMessage');
+attachQuestion('kissYes','kissNo','q4','q5','kissMessage');
+attachQuestion('hugYes','hugNo','q5','q6','hugMessage');
+attachQuestion('holdYes','holdNo','q6','q7','holdMessage');
+attachQuestion('comeYes','comeNo','q7','q8','comeMessage'); // show q8 after 7th Yes
+
+// Gifts
+const gifts={gift1:"💋 Kiss",gift2:"🤗 Hug",gift3:"🍫 Chocolates"};
+document.getElementById('gift1').onclick = ()=> showGift('gift1');
+document.getElementById('gift2').onclick = ()=> showGift('gift2');
+document.getElementById('gift3').onclick = ()=> showGift('gift3');
+
+function showGift(giftId){
+  hide('q8'); show('giftDisplay'); document.getElementById('giftText').textContent=gifts[giftId];
+  document.getElementById('backGift').onclick = ()=>{
+    if(giftId==='gift3'){ hide('giftDisplay'); show('finalPage'); }
+    else{ hide('giftDisplay'); show('q8'); }
+  };
+}
+
+// Floating hearts
+function createHeart(){
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.fontSize=(Math.random()*12+10)+'px';
+  heart.style.opacity=Math.random()*0.5+0.5;
+  heart.style.animationDuration=(Math.random()*3+4)+'s';
+  heart.style.animationDelay=Math.random()*2+'s';
+  heart.textContent='❤️';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),7000);
+}
+setInterval(createHeart,400);
+</script>
+</body>
+</html>
