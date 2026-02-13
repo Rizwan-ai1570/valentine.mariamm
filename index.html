@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,63 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Mariam Rizwan ❤️</title>
 <style>
-body {
-  margin:0;
-  font-family: Arial,sans-serif; 
-  background: linear-gradient(to bottom,#f8e6eb,#fff); 
-  display:flex; justify-content:center; padding:40px 0; 
-  overflow-x:hidden; position:relative;
-}
-
-/* Container for all questions */
-.container {
-  background:#e60073; /* Dark pink background for all questions */
-  border-radius:25px; 
-  box-shadow:0 15px 30px rgba(0,0,0,0.1); 
-  width:460px; 
-  padding:40px; 
-  text-align:center; 
-  z-index:1; 
-  position:relative;
-}
-
-/* All text styling */
-h1,h2,p,.message {
-  color:white;
-  font-weight:normal;
-  font-style:normal;
-}
-h1{font-size:32px;margin-bottom:0;} 
-h2{font-size:24px;}
-p{font-size:20px;margin-top:8px;margin-bottom:24px;}
-.message{margin-top:12px;min-height:24px;}
-
+body { margin:0; font-family: Arial,sans-serif; background: linear-gradient(to bottom,#f8e6eb,#fff); display:flex; justify-content:center; padding:40px 0; overflow-x:hidden; position:relative;}
+.container { background:#f2f2f2; border-radius:25px; box-shadow:0 15px 30px rgba(0,0,0,0.1); width:460px; padding:40px; text-align:center; z-index:1; position:relative;}
+h1,h2{color:#e6005c;} h1{font-size:32px;margin-bottom:0;} h2{font-size:24px;}
+p{font-size:20px;color:#444;margin-top:8px;margin-bottom:24px;}
 .buttons{margin-bottom:15px;}
-button{
-  padding:10px 30px;
-  border:none;
-  border-radius:25px;
-  font-size:16px;
-  cursor:pointer;
-  margin:8px;
-  transition:background-color 0.3s;
-}
-
-/* Yes / No buttons */
+button{padding:10px 30px;border:none;border-radius:25px;font-size:16px;cursor:pointer;margin:8px;transition:background-color 0.3s;}
 .yes{background-color:#ff3366;color:white;}
 .yes:hover{background-color:#e6005c;}
 .no{background-color:#ccc;}
 .no:hover{background-color:#bbb;}
-
-/* Gift buttons */
-#q8 button{
-  background-color:#8B0000; /* dark red */
-  color:white;
-}
-#q8 button:hover{background-color:#a50000;}
-
+.message{font-weight:bold;color:#e6005c;margin-top:12px;min-height:24px;}
 .hidden{display:none;}
-hr{margin:30px 0;border:none;border-top:1px solid #fff;}
+hr{margin:30px 0;border:none;border-top:1px solid #ddd;}
 
 /* Floating hearts */
 .heart{position:fixed;bottom:-50px;color:red;pointer-events:none;animation-name:floatUp;animation-timing-function:linear;}
@@ -72,7 +27,7 @@ hr{margin:30px 0;border:none;border-top:1px solid #fff;}
 <body>
 <div class="container">
 
-  <!-- Questions 1 to 7 -->
+  <!-- Question 1 to 7 (previously defined) -->
   <div id="q1"> <h1>Mariam Rizwan ❤️</h1><p>Ready for a sweet Valentine's challenge?</p>
     <div class="buttons"><button class="yes" id="firstYes">Yes!</button><button class="no" id="firstNo">No</button></div>
     <div id="firstMessage" class="message"></div>
@@ -138,7 +93,7 @@ function show(id){ document.getElementById(id).classList.remove('hidden'); }
 function hide(id){ document.getElementById(id).classList.add('hidden'); }
 function setMsg(id,text){ document.getElementById(id).textContent=text; }
 
-// Yes/No flow
+// Yes/No flow function
 function attachQuestion(yesId,noId,currentQ,nextQ,msgId){
   document.getElementById(yesId).onclick = ()=>{
     hide(currentQ);
@@ -156,16 +111,24 @@ attachQuestion('romanceYes','romanceNo','q3','q4','romanceMessage');
 attachQuestion('kissYes','kissNo','q4','q5','kissMessage');
 attachQuestion('hugYes','hugNo','q5','q6','hugMessage');
 attachQuestion('holdYes','holdNo','q6','q7','holdMessage');
-attachQuestion('comeYes','comeNo','q7','q8','comeMessage'); // show q8 after 7th Yes
+attachQuestion('comeYes','comeNo','q7','q8','comeMessage'); // q8 appears after 7th Yes
 
-// Gifts
-const gifts={gift1:"💋 Kiss",gift2:"🤗 Hug",gift3:"🍫 Chocolates"};
+// Gift interactions
+const gifts = {
+  gift1:"💋 Kiss",
+  gift2:"🤗 Hug",
+  gift3:"🍫 Chocolates"
+};
+
 document.getElementById('gift1').onclick = ()=> showGift('gift1');
 document.getElementById('gift2').onclick = ()=> showGift('gift2');
 document.getElementById('gift3').onclick = ()=> showGift('gift3');
 
 function showGift(giftId){
-  hide('q8'); show('giftDisplay'); document.getElementById('giftText').textContent=gifts[giftId];
+  hide('q8');
+  show('giftDisplay');
+  document.getElementById('giftText').textContent = gifts[giftId];
+  // Special case: Gift 3 back leads to final page
   document.getElementById('backGift').onclick = ()=>{
     if(giftId==='gift3'){ hide('giftDisplay'); show('finalPage'); }
     else{ hide('giftDisplay'); show('q8'); }
