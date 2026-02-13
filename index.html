@@ -22,14 +22,13 @@
         padding: 40px;
         border-radius: 20px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        width: 350px;
-        position: relative;
+        width: 360px;
     }
 
     h1 {
         color: #e6005c;
         font-size: 28px;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
     p {
@@ -38,9 +37,7 @@
     }
 
     .buttons {
-        margin-top: 30px;
-        position: relative;
-        height: 60px;
+        margin-top: 25px;
     }
 
     button {
@@ -49,13 +46,13 @@
         border-radius: 20px;
         font-size: 16px;
         cursor: pointer;
+        margin: 5px;
         transition: 0.3s;
     }
 
     #yesBtn {
         background-color: #ff3366;
         color: white;
-        margin-right: 10px;
     }
 
     #yesBtn:hover {
@@ -64,17 +61,14 @@
 
     #noBtn {
         background-color: #ddd;
-        position: absolute;
     }
 
-    .hidden {
-        display: none;
-    }
-
-    .love-message {
+    .message {
         margin-top: 20px;
-        font-size: 20px;
+        font-size: 18px;
+        font-weight: bold;
         color: #e6005c;
+        display: none;
     }
 </style>
 </head>
@@ -90,25 +84,22 @@
         <button id="noBtn">No</button>
     </div>
 
-    <div id="message" class="love-message hidden">
-        You just made me the happiest person ❤️💍
-    </div>
+    <div id="message" class="message"></div>
 </div>
 
 <script>
-    const noBtn = document.getElementById("noBtn");
     const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
     const message = document.getElementById("message");
 
-    noBtn.addEventListener("mouseover", () => {
-        const x = Math.random() * 250;
-        const y = Math.random() * 50;
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
+    yesBtn.addEventListener("click", () => {
+        message.style.display = "block";
+        message.innerText = "You just made me the happiest man alive ❤️";
     });
 
-    yesBtn.addEventListener("click", () => {
-        message.classList.remove("hidden");
+    noBtn.addEventListener("click", () => {
+        message.style.display = "block";
+        message.innerText = "You may press No… but destiny clearly says you must press Yes.";
     });
 </script>
 
