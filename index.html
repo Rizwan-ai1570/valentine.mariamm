@@ -17,14 +17,19 @@
     background: #f2f2f2;
     border-radius: 25px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    width: 420px;
+    width: 460px;
     padding: 40px;
     text-align: center;
   }
-  h1 {
+  h1, h2 {
     color: #e6005c;
+  }
+  h1 {
     font-size: 32px;
     margin-bottom: 0;
+  }
+  h2 {
+    font-size: 24px;
   }
   p {
     font-size: 20px;
@@ -103,55 +108,124 @@
       <div id="romanceMessage" class="message"></div>
     </div>
 
+    <!-- FOURTH BOX (Question 1) -->
+    <div id="fourthBox" class="hidden">
+      <hr />
+      <p>Can I steal a sweet kiss from you? 😘💕</p>
+      <div class="buttons">
+        <button class="yes" id="kissYes">Yes</button>
+        <button class="no" id="kissNo">No</button>
+      </div>
+      <div id="kissMessage" class="message"></div>
+    </div>
+
+    <!-- FIFTH BOX (Question 2) -->
+    <div id="fifthBox" class="hidden">
+      <hr />
+      <p>Would you like to give me a warm hug? 🤗❤️</p>
+      <div class="buttons">
+        <button class="yes" id="hugYes">Yes</button>
+        <button class="no" id="hugNo">No</button>
+      </div>
+      <div id="hugMessage" class="message"></div>
+    </div>
+
+    <!-- SIXTH BOX (Question 3) -->
+    <div id="sixthBox" class="hidden">
+      <hr />
+      <p>Will you hold me close for a little while? 🥰</p>
+      <div class="buttons">
+        <button class="yes" id="holdYes">Yes</button>
+        <button class="no" id="holdNo">No</button>
+      </div>
+      <div id="holdMessage" class="message"></div>
+    </div>
+
   </div>
 
 <script>
-  // First box buttons and message
+  // Get elements
   const firstYesBtn = document.getElementById('firstYes');
   const firstNoBtn = document.getElementById('firstNo');
   const firstMessage = document.getElementById('firstMessage');
 
-  // Second box elements
   const secondBox = document.getElementById('secondBox');
   const gameYesBtn = document.getElementById('gameYes');
   const gameNoBtn = document.getElementById('gameNo');
   const gameMessage = document.getElementById('gameMessage');
 
-  // Third box elements
   const thirdBox = document.getElementById('thirdBox');
   const romanceYesBtn = document.getElementById('romanceYes');
   const romanceNoBtn = document.getElementById('romanceNo');
   const romanceMessage = document.getElementById('romanceMessage');
 
-  // First box event listeners
+  const fourthBox = document.getElementById('fourthBox');
+  const kissYesBtn = document.getElementById('kissYes');
+  const kissNoBtn = document.getElementById('kissNo');
+  const kissMessage = document.getElementById('kissMessage');
+
+  const fifthBox = document.getElementById('fifthBox');
+  const hugYesBtn = document.getElementById('hugYes');
+  const hugNoBtn = document.getElementById('hugNo');
+  const hugMessage = document.getElementById('hugMessage');
+
+  const sixthBox = document.getElementById('sixthBox');
+  const holdYesBtn = document.getElementById('holdYes');
+  const holdNoBtn = document.getElementById('holdNo');
+  const holdMessage = document.getElementById('holdMessage');
+
+  // First box logic
   firstYesBtn.onclick = () => {
     firstMessage.textContent = "You just made me the happiest man alive ❤️";
     secondBox.classList.remove('hidden');
   };
-
   firstNoBtn.onclick = () => {
     firstMessage.textContent = "You might press No… but I’ll literally cry, so please just press Yes 🥺💖";
   };
 
-  // Second box event listeners
+  // Second box logic
   gameYesBtn.onclick = () => {
     gameMessage.textContent = '';
     thirdBox.classList.remove('hidden');
   };
-
   gameNoBtn.onclick = () => {
     gameMessage.textContent = "No option detected… please say Yes 😌";
   };
 
-  // Third box event listeners
+  // Third box logic
   romanceYesBtn.onclick = () => {
-    romanceMessage.textContent = "Get ready… tonight is all about us ❤️🔥";
+    romanceMessage.textContent = '';
+    fourthBox.classList.remove('hidden');
   };
-
   romanceNoBtn.onclick = () => {
     romanceMessage.textContent = "Hmm… I think your heart meant Yes 😉";
+  };
+
+  // Fourth box (kiss) logic
+  kissYesBtn.onclick = () => {
+    kissMessage.textContent = "Aww, you just made me so happy with that kiss! 😘❤️";
+    fifthBox.classList.remove('hidden');
+  };
+  kissNoBtn.onclick = () => {
+    kissMessage.textContent = "Oh no, maybe next time? 🥺";
+  };
+
+  // Fifth box (hug) logic
+  hugYesBtn.onclick = () => {
+    hugMessage.textContent = "Your hug means the world to me 🤗💕";
+    sixthBox.classList.remove('hidden');
+  };
+  hugNoBtn.onclick = () => {
+    hugMessage.textContent = "That's okay, hugs can wait 😊";
+  };
+
+  // Sixth box (hold close) logic
+  holdYesBtn.onclick = () => {
+    holdMessage.textContent = "Holding you close sounds perfect 🥰❤️";
+  };
+  holdNoBtn.onclick = () => {
+    holdMessage.textContent = "No worries, your presence is enough 💖";
   };
 </script>
 </body>
 </html>
-
