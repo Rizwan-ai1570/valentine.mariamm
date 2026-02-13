@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +35,7 @@ hr{margin:30px 0;border:none;border-top:1px solid #ddd;}
     <div class="buttons"><button class="yes" id="startBtn">Start ❤️</button></div>
   </div>
 
-  <!-- Question 1 to 7 (previously defined) -->
+  <!-- Question 1 to 7 -->
   <div id="q1" class="hidden"> 
     <h1>Mariam Rizwan ❤️</h1>
     <p>Ready for a sweet Valentine's challenge?</p>
@@ -140,7 +139,6 @@ function showGift(giftId){
   hide('q8');
   show('giftDisplay');
   document.getElementById('giftText').textContent = gifts[giftId];
-  // Special case: Gift 3 back leads to final page
   document.getElementById('backGift').onclick = ()=>{
     if(giftId==='gift3'){ hide('giftDisplay'); show('finalPage'); }
     else{ hide('giftDisplay'); show('q8'); }
