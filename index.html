@@ -1,1 +1,125 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam Rizwan ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #f8e6eb, #ffffff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .card {
+        background: #f2f2f2;
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        width: 420px;
+    }
+
+    h1 {
+        color: #e6005c;
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 20px;
+        color: #444;
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 10px 30px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 8px;
+    }
+
+    .yes {
+        background-color: #ff3366;
+        color: white;
+    }
+
+    .no {
+        background-color: #ccc;
+    }
+
+    .message {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #e6005c;
+    }
+
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>Mariam Rizwan ❤️</h1>
+    <p>Ready for a sweet Valentine's challenge?</p>
+
+    <div class="buttons">
+        <button class="yes" onclick="firstYes()">Yes!</button>
+        <button class="no" onclick="firstNo()">No</button>
+    </div>
+
+    <div id="firstMessage" class="message"></div>
+
+    <!-- SECOND BOX -->
+    <div id="secondBox" class="hidden">
+        <hr style="margin:25px 0;">
+        <p>Do you wanna play a game with me? 🎮</p>
+        <div class="buttons">
+            <button class="yes" onclick="gameYes()">Yes</button>
+            <button class="no" onclick="gameNo()">No</button>
+        </div>
+        <div id="gameMessage" class="message"></div>
+    </div>
+
+</div>
+
+<script>
+
+function firstYes() {
+    document.getElementById("firstMessage").innerHTML =
+        "You just made me the happiest man alive ❤️";
+    document.getElementById("secondBox").classList.remove("hidden");
+}
+
+function firstNo() {
+    document.getElementById("firstMessage").innerHTML =
+        "You might press No… but I’ll literally cry, so please just press Yes 🥺💖";
+}
+
+function gameNo() {
+    document.getElementById("gameMessage").innerHTML =
+        "No option detected… please say Yes 😌";
+}
+
+function gameYes() {
+    window.location.href = "romance.html";
+}
+
+</script>
+
+</body>
+</html>
