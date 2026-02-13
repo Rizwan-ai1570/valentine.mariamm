@@ -1,1 +1,103 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam Rizwan ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to bottom, #ffe6eb, #ffffff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .card {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        width: 360px;
+    }
+
+    h1 {
+        color: #e6005c;
+        font-size: 28px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 18px;
+        color: #444;
+    }
+
+    .buttons {
+        margin-top: 25px;
+    }
+
+    button {
+        padding: 10px 25px;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 5px;
+        transition: 0.3s;
+    }
+
+    #yesBtn {
+        background-color: #ff3366;
+        color: white;
+    }
+
+    #yesBtn:hover {
+        background-color: #e6005c;
+    }
+
+    #noBtn {
+        background-color: #ddd;
+    }
+
+    .message {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #e6005c;
+        display: none;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Mariam Rizwan ❤️</h1>
+    <p>Ready for a sweet Valentine's challenge?</p>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes!</button>
+        <button id="noBtn">No</button>
+    </div>
+
+    <div id="message" class="message"></div>
+</div>
+
+<script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    yesBtn.onclick = function() {
+        message.style.display = "block";
+        message.innerHTML = "You just made me the happiest man alive ❤️";
+    };
+
+    noBtn.onclick = function() {
+        message.style.display = "block";
+        message.innerHTML = "You might press No… but I’ll literally cry, so please just press Yes 🥺💖";
